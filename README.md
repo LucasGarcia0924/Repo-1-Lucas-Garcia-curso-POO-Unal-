@@ -69,3 +69,47 @@ def palindromo(): # Función requerida
     else:
         print("La palabra no es un palíndromo.")
 ```
+***
+## Inciso 3.
+Se pide una función capaz de registrar una lista de números y mostrar cuáles de estos son primos.
+
+Esto se lleva a cabo utilizando el ciclo for, debido a que, al ingresar los números en la primera lista, se itera entre ellos y los que cumplan las condiciones se guardan dentro de la lista de números primos, la cuál, se imprime al final.
+
+De manera específica, las condiciones son:
+- Si es menor a 2, no es número primo, se sabe porque 0 y 1 no lo son.
+- Si es igual a 2, se guarda; esto es una condición extra ya que, el 2 pese a ser primo, no cumple el condicional siguiente.
+- Si es mayor a 2, se divide el número por todos los números entre el 2 y 1 entero más que su mitad debido a que sabemos que los divisores van "en parejas", desde 2 y la mitad y luego haber pasado esta, no es necesario comprobar más si lo dividen completamente, pues ya se habrá revisado "su pareja". De forma que si ningún módulo de estas operaciones es igual a 0, el número es primo.
+  
+```python
+def primos(): # función requerida
+    # Declaración e inicialización de variables
+    lista_numeros : list = [] 
+    lista_primos : list = [] 
+    
+    # Se pide la lista de números al usuario
+    print("Ingresa números enteros para determinar cuáles son primos (Presiona Enter para finalizar)\n")
+    while True: # Ciclo infinito, se rompe con el break
+        try:
+            lista_numeros.append(int(input("Ingresa un número: \n")))
+        except ValueError: # Cuando se ingresa un valor no numérico, se rompe el ciclo
+            break
+
+    # Se verifica cuáles números son primos
+    for i in lista_numeros:
+        if i < 2: # Los números menores a 2 no son primos
+            continue
+        elif i == 2: # El 2 es primo pero no cumple el próximo condicional
+            lista_primos.append(i)
+        else:
+            # Si el número es divisible por otro entre 2 y su mitad, pasa al siguiente
+            for j in range(2, int(i**0.5) + 1):
+                if i % j == 0:
+                    break
+            else: # Si no se encontró ningún divisor, se agrega a la lista de números primos
+                lista_primos.append(i)
+    
+    # Se itera por los elementos de la lista de números primos para mostrarlos
+    print("\nLos valores ingresados que hacen parte de los números primos son:\n")
+    for num in lista_primos:
+        print(f"{num}")
+```
