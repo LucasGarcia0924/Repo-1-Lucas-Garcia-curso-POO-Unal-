@@ -156,7 +156,7 @@ def mayor_suma(): # función requerida
     print(f"Estos fueron los resultados obtenidos: {lista_sumas}")
 ```
 ***
-Inciso 5
+## Inciso 5
 Se requería una función, que al ingresar una lista de palabras, retorne aquellas con igual caracteres.
 
 En un ciclo while, se ingresan las palabras en una lista, hasta que el usuario presione ENTER, cada palabra se vuelve una lista y se ordena alfabeticamente, para luego comparar estas listas, y si concuerdan, se agregan a un diccionario donde para cada palabra, hay una lista con palabras con sus mismos caracteres.
