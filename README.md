@@ -115,7 +115,9 @@ def primos(): # función requerida
 ```
 ***
 ## Inciso 4.
+Se pedía hallar la mayor suma consecutiva de parejas de números.
 
+Para esto, primero se pedían los números al usuario, luego se hacían las sumas de los números contiguos y se almacenaban en una lista; lista que al ordenarla ascendetemente, permitía tomar el último valor, siendo este el mayor.
 ```python
 def mayor_suma(): # función requerida
     
@@ -152,4 +154,48 @@ def mayor_suma(): # función requerida
     # Se muestra la mayor suma posible
     print(f"\nLa mayor suma posible es: {lista_sumas[-1]}")
     print(f"Estos fueron los resultados obtenidos: {lista_sumas}")
+```
+***
+Inciso 5
+Se requería una función, que al ingresar una lista de palabras, retorne aquellas con igual caracteres.
+
+En un ciclo while, se ingresan las palabras en una lista, hasta que el usuario presione ENTER, cada palabra se vuelve una lista y se ordena alfabeticamente, para luego comparar estas listas, y si concuerdan, se agregan a un diccionario donde para cada palabra, hay una lista con palabras con sus mismos caracteres.
+```python
+def Mismos_Caracteres():
+    # Declaración de variables
+    dicc_conjuntos : dict = {}
+    lis_lis_palabras : list = []
+    palabra_lista : list = []
+    lista_palabras : list = []
+    lista_parejas : list = []
+
+    print("Ingresa palabras para comparar si tienen los mismos caracteres")
+    print("(Presiona Enter para finalizar)\n")
+    while True: # Ciclo para ingresar palabras
+        palabra_lista = []
+        palabra = str(input("Ingresa una palabra: \n"))
+        if palabra == "":
+            break
+        palabra = palabra.lower()
+        for i in palabra:
+            palabra_lista.append(i)
+        lista_palabras.append(palabra)
+        lis_lis_palabras.append(palabra_lista)
+    
+    # Creación del diccionario con las palabras que tienen los mismos caracteres
+    for i in range(len(lis_lis_palabras)):
+        for j in range(len(lis_lis_palabras)):
+            if lis_lis_palabras[i] == lis_lis_palabras[j]:
+                continue
+            else:
+                if (sorted(lis_lis_palabras[i])) == (sorted(lis_lis_palabras[j])):
+                    print(sorted(lis_lis_palabras[i]), sorted(lis_lis_palabras[j]))
+                    lista_parejas.append((lista_palabras[j]))
+        dicc_conjuntos[lista_palabras[i]] = lista_parejas
+        lista_parejas = []
+
+    # Mostrar resultados
+    print("Para cada palabra, estas son las que tienen los mismos caracteres:")
+    for clave in dicc_conjuntos:
+        print(f"{clave} : {dicc_conjuntos[clave]}")
 ```
